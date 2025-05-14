@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <style>
+  @import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap');
+    body {
+      padding-top: 35px;
+      background-image: linear-gradient(to bottom right  , rgb(116, 72, 228), white ); 
+    position: relative;
+    
+    }
+
+    /* Hamburger icon styles */
+    .navbar-toggler-icon {
+      background-color: #333; /* Set the color of the hamburger icon */
+    }
+.navbar .logo {
+  color: #fff;
+  font-weight: 600;
+  font-size: 2.1rem;
+  text-decoration: none;
+}
+
+.navbar .logo span {
+  color: #C06B3E;
+}
+
+.navbar .menu-links {
+  display: flex;
+  list-style: none;
+  gap: 35px;
+}
+
+.navbar a {
+  color: #000;
+  text-decoration: none;
+  font-size: 20px;
+  transition: 0.2s ease;
+}
+
+.navbar a:hover {
+  color: #C06B3E;
+}
+.card{
+    margin-bottom: 5%;
+}
+.letter{
+position: absolute;
+display: flex;
+align-items: center;
+justify-content: center;
+}
+#title{
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: 800;
+}
+#title2{
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: 400;
+}
+
+    /* Responsive navbar styles */
+    @media (max-width: 768px) {
+      body {
+        padding-top: 56px;
+      }
+
+      .navbar-collapse {
+        background-color: #f8f9fa; /* Set the background color of the mobile menu */
+      }
+    }
+    #prog{
+      width: 0% ;background-color: aqua;
+    }
+  </style>
+  <title>Responsive Navbar</title>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg  fixed-top">
+    <a class="logo" href="#"><span style="color: red;">Be</span>youndTech</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Home<span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">About</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Course</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">LOGIN</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<div class="container-fluid" style="margin-top: 7%;">
+    <h2 style="display: flex;justify-content: center;align-items: center;padding-bottom: 2%;" id="title">Beyound Knowledge </h2>
+    <p style="display: flex;justify-content: center;align-items: center;padding-bottom: 2%;" id="title2">Give the Assessment and check your progress in particular subject </p>
+    <div class="row row-cols-1 row-cols-md-5 g-2">
+        <div class="col">
+            <div class="card h-100">
+              <img src="https://www.hostinger.com/tutorials/wp-content/uploads/sites/2/2018/11/what-is-html-3.webp" class="card-img-top" height="138px" alt="Html">
+              <div class="card-body">
+                <h5 class="card-title">Html</h5>
+                <hr>
+                <a href="htmlquiz.html"  id="btn1" target="_blank" class="btn btn-primary">Quiz</a>
+              </div>
+            </div>
+          </div>
+    
+          <div class="col">
+            <div class="card h-100">
+              <img src="https://www.freecodecamp.org/news/content/images/2019/10/css.png" class="card-img-top" height="138px" alt="Css">
+              <div class="card-body">
+                <h5 class="card-title">Css</h5>
+                <hr>
+                <a href="cssquiz.html"  id="btn2" target="_blank" class="btn btn-primary">Quiz</a> 
+              </div>
+            </div>
+          </div>
+
+          <div class="col">
+            <div class="card h-100">
+              <img src="https://cdn.mindmajix.com/courses/jquery-training-120620.png" class="card-img-top" height="138px" alt="jQuerry">
+              <div class="card-body">
+                <h5 class="card-title">jQuerry</h5>
+               <hr>
+                <a href="jquerryquiz.html"   id="btn3" target="_blank" class="btn btn-primary">Quiz</a>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card h-100">
+              <img src="https://miro.medium.com/v2/resize:fit:1200/1*EkWwAdxaCYHABs7dDop-NA.png" class="card-img-top" height="138px" alt="Bootstrap">
+              <div class="card-body">
+                <h5 class="card-title">Bootstrap</h5>
+               <hr>
+                <a href="bootstrap.html"  id="btn4" target="_blank" class="btn btn-primary">Quiz</a>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card h-100">
+              <img src="https://www.sipexe.com/assets/courses/Java.jpg" class="card-img-top" alt="Course 2 Image">
+              <div class="card-body">
+                <h5 class="card-title">Java</h5>
+                <hr>
+               <a href="jquerryquiz.html"  target="_blank" id="btn5" class="btn btn-primary">Quiz</a>
+              </div>
+            </div>
+          </div>
+    </div>
+    </div>
+<!-- Your content goes here -->
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.7/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<div class="progress">
+  <div class="progress-bar bg-danger"  style= "width: 100%;" id="prog" role="progressbar"></div>
+</div>
+
+<script>
+  
+  $(document).ready(function(){
+    $("#btn1").click(function(){
+      $("#prog").css("color", "red");
+    })
+    $("#btn2").click(function(){
+      $(".progress-bar").css({"Width":"40%"})
+    })
+    $("#btn3").click(function(){
+      $(".progress-bar").css({"Width":"600%"})
+    })
+    $("#btn4").click(function(){
+      $(".progress-bar").css({"Width":"80%"})
+    })
+    $("#btn5").click(function(){
+      $(".progress-bar").css({"Width":"100%"})
+    })
+  })
+
+
+</script>
+</body>
+</html>

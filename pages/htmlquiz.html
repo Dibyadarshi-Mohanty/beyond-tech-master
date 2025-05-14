@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Interactive Quiz</title>
+  <link rel="stylesheet"="text/css" href="../styles/styles.css">
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+    crossorigin="anonymous"></script>
+  <script src="../scripts/html.js"></script>
+</head>
+
+<body>
+  <div class="container mt-5" id="quiz-container" style="height: 70vh;">
+    <div class="d-flex inner-container justify-content-center row">
+      <div class="col-md-10 col-lg-10">
+        <div class="border">
+          <div class="question bg-white p-3 border-bottom">
+            <div class="d-flex flex-row justify-content-between align-items-center mcq">
+              <h4>MCQ Quiz</h4><span id="tot_q"></span>
+            </div>
+          </div>
+          <div class="question bg-white p-5 border-bottom">
+            <div class="d-flex flex-row align-items-center question-title" >
+              <h3 class="text-danger">Q.</h3>
+              <h5 class="mt-1 ml-2" id="question"></h5>
+            </div>
+            <div class="ans ml-2" id="choices">
+             
+            </div>
+          </div>
+          <div class="d-flex flex-row justify-content-between align-items-center p-3 bg-white">
+           <p class="mx-auto"> <button class="btn btn-primary d-flex align-items-center justify-self-center btn-danger d-none" id="submit" type="button"><i
+            class="fa fa-angle-left mt-1 mr-1"></i>Submit</button></p>
+            <button class="btn btn-primary border-success align-items-center btn-success" id="next" type="button">Next<i
+                class="fa fa-angle-right ml-2"></i></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="score-container" style="display: none;">
+    <div class="inner d-flex align-items-center justify-content-center gap-3">
+      
+      <h2>You got <span id="score"></span> out of <span id="total-questions">
+        <button id="restart">Restart</button>
+    </div>
+  </div>
+</body>
+
+</html>

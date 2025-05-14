@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Dashboard</title>
+    <link rel="shortcut icon" href="./images/logo.png">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></Script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            text-decoration: none;
+            list-style: none;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            font-size: .88rem;
+            background: #363949;
+            user-select: none;
+            overflow-x: hidden;
+            color: #fff;
+            scroll-behavior: smooth;
+        }
+
+        img {
+            display: block;
+            width: 100%;
+        }
+
+        h1 {
+            font-weight: 800;
+            font-size: 1.8rem;
+        }
+
+        h2 {
+            font-size: 1.4rem;
+        }
+
+        h3 {
+            font-size: .87rem;
+        }
+
+        h4 {
+            font-size: .8rem;
+        }
+
+        h5 {
+            font-size: .77rem;
+        }
+
+        small {
+            font-size: .75rem;
+        }
+
+        .text-muted {
+            color: #7d8da1;
+        }
+
+        p {
+            color: #fff
+        }
+
+        b {
+            color: #fff;
+            ;
+        }
+
+        .primary {
+            color: #7380ec;
+        }
+
+        .danger {
+            color: #ff7782;
+        }
+
+        .success {
+            color: #41f1b6
+        }
+
+        .warning {
+            color: #ffbb55;
+        }
+
+        .container {
+            position: relative;
+            display: grid;
+            width: 93%;
+            margin: 0 3rem;
+            gap: 1.8rem;
+            grid-template-columns: 14rem auto 23rem;
+            padding-top: 4rem;
+        }
+
+        header h3 {
+            font-weight: 500;
+        }
+
+        header {
+            position: fixed;
+            width: 100vw;
+            z-index: 1000;
+            background-color: #f6f6f9;
+        }
+
+        header.active {
+            box-shadow: var(--box-shadow);
+        }
+
+        header .logo {
+            display: flex;
+            gap: .8rem;
+            margin-right: auto;
+        }
+
+        header .logo img {
+            width: 2rem;
+            height: 2rem;
+        }
+
+        header,
+        header .navbar {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding: 0 3rem;
+            color: var(--color-info);
+        }
+
+        header .navbar a {
+            display: flex;
+            margin-left: 2rem;
+            gap: 1rem;
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
+            height: 3.7rem;
+            transition: all 300ms ease;
+            padding: 0 2rem;
+        }
+
+        header .navbar a:hover {
+            padding-top: 1.5rem;
+        }
+
+        header .navbar a.active {
+            background: rgba(132, 139, 200, 0.18);
+            color: #7380ec;
+        }
+
+        header .navbar a.active::before {
+            content: "";
+            background-color: #7380ec;
+            position: absolute;
+            height: 5px;
+            width: 100%;
+            left: 0;
+            top: 0;
+        }
+
+        header #profile-btn {
+            display: none;
+            font-size: 2rem;
+            margin: .5rem 2rem 0 0;
+            cursor: pointer;
+        }
+
+        header .theme-toggler span {
+            font-size: 1.2rem;
+            width: 50%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        header .theme-toggler span.active {
+            background-color: #7380ec;
+            color: white;
+            border-radius: var(0.4rem);
+        }
+
+        aside .profile {
+            margin-top: 2rem;
+            width: 13rem;
+            position: fixed;
+        }
+
+        aside .profile .top {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            border-bottom: 1px solid rgba(132, 139, 200, 0.18);
+            padding-bottom: 1rem;
+        }
+
+        aside .profile .top:hover .profile-photo {
+            scale: 1.05;
+        }
+
+        aside .profile .top .profile-photo {
+            width: 6rem;
+            height: 6rem;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 5px solid rgba(132, 139, 200, 0.18);
+            transition: all 400ms ease;
+        }
+
+        aside .profile .about p {
+            padding-bottom: 1rem;
+        }
+
+        aside .profile .about {
+            margin-top: 1rem;
+        }
+
+        main {
+            position: relative;
+            margin-top: 1.4rem;
+        }
+
+        main .subjects {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 1.6rem;
+        }
+
+        main .subjects>div {
+            background-color: var(--color-white);
+            padding: var(1.8rem);
+            border-radius: var(2rem);
+            margin-top: 1rem;
+            box-shadow: var(--box-shadow);
+            transition: all 300ms ease;
+        }
+
+        main .subjects>div:hover {
+            box-shadow: none;
+        }
+
+        main .subjects>div span {
+            background-color: #7380ec;
+            padding: .5rem;
+            border-radius: 50%;
+            color: var(--color-white);
+            font-size: 1.5rem;
+        }
+
+        main .subjects>div.mth span,
+        main .subjects>div.cg span {
+            background: #ff7782;
+        }
+
+        main .subjects>div.cs span {
+            background: #41f1b6;
+        }
+
+        main .subjects h3 {
+            margin: 1rem 0 0.6rem;
+            font-size: 1rem;
+        }
+
+        main .subjects .progress {
+            position: relative;
+            width: 89px;
+            height: 89px;
+            border-radius: 50%;
+            margin: auto;
+        }
+
+        main .subjects svg circle {
+            fill: none;
+            stroke: #7380ec;
+            stroke-width: 8;
+            stroke-linecap: round;
+            transform: translate(5px, 5px);
+            stroke-dasharray: 110;
+            stroke-dashoffset: 92;
+        }
+
+        main .subjects .eg svg circle {
+            stroke-dashoffset: 25;
+            stroke-dasharray: 210;
+        }
+
+        main .subjects .mth svg circle {
+            stroke-dashoffset: 7;
+            stroke-dasharray: 210;
+        }
+
+        main .subjects .cs svg circle {
+            stroke-dashoffset: 35;
+            stroke-dasharray: 210;
+        }
+
+        main .subjects .cg svg circle {
+            stroke-dashoffset: 0;
+            stroke-dasharray: 210;
+        }
+
+        main .subjects .net svg circle {
+            stroke-dashoffset: 5;
+            stroke-dasharray: 210;
+        }
+
+        main .subjects .progress .number {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        main .subjects small {
+            margin-top: 1rem;
+            display: block;
+        }
+
+        .right {
+            margin-top: 2.2rem;
+            padding-left: 1.5rem;
+        }
+
+        @media screen and (max-width: 768px) {
+            html {
+                font-size: 10px;
+            }
+
+            header {
+                padding: 0 .8rem;
+            }
+
+            .container {
+                width: 100%;
+                grid-template-columns: 1fr;
+                margin: 0;
+            }
+
+            header #profile-btn {
+                display: inline;
+            }
+
+            aside {
+                position: absolute;
+                top: 4rem;
+                left: 0;
+                right: 0;
+                background-color: var(--color-white);
+                padding-left: 2rem;
+                transform: translateX(-100%);
+                z-index: 10;
+                width: 18rem;
+                height: 100%;
+                box-shadow: 1rem 3rem 4rem rgba(132, 139, 200, 0.18);
+                transition: all 2s ease;
+            }
+
+            aside.active {
+                transform: translateX(0);
+            }
+
+            main {
+                padding: 0 2rem;
+            }
+
+            .right {
+                width: 100%;
+                padding: 2rem;
+            }
+        }
+        canvas{
+            height: 22rem !important;
+    width: 47rem !important;
+    margin-left: 19rem;
+        }
+    </style>
+    <script>
+        $(document).ready(function () {
+            var Data = [40, 22, 25, 18, 23, 27, 21]
+            new Chart($("#dataPieChart"), {
+                type: 'bar',
+                data: {
+                    labels: ["Html", "Css", "jQuerry", "Bootstrap", "Java"],
+                    datasets: [{
+                        label: "Subjects",
+                        data: Data,
+                        backgroundColor: [
+                            '#007bff',
+                            '#36a2eb',
+                            '#cc65fe',
+                            '#20c997',
+                            '#17a2b8',
+                            '#fecb52'
+                        ]
+                    }]
+                    , options: {
+                        responsive: true
+                    }
+                }
+            })
+        })
+    </script>
+</head>
+
+<body>
+    <header>
+        <div class="logo">
+            <h2><span class="danger">Be</span> <span style=" background: -webkit-linear-gradient( #3321da, #0062f1, #007fdd, #0093b5, #00a197, #03ac96, #1fb792, #39c28b, #3bd1a5, #42dfbf, #4eedd8, #5ffbf1);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;">yondTech</span></h2>
+                
+        </div>
+        <div class="navbar">
+            <a href="Home-UPDATED.html">
+
+                <h3>Home</h3>
+            </a>
+
+            <a href="../pages/nav.html">
+                <h3>Quiz</h3>
+            </a>
+            <a href="../pages/user.html">
+                <h3>Analytics</h3>
+            </a>
+            <a href="../pages/login.html">
+                <h3>Logout</h3>
+            </a>
+        </div>
+        <div id="profile-btn">
+            <span class="material-icons-sharp">person</span>
+        </div>
+        <div class="theme-toggler">
+
+    </header>
+    <div class="container add">
+        <aside style="border-right: 3px solid whitesmoke;">
+            <div class="profile">
+                <div class="top">
+                    <div class="profile-photo">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTu1ddheCLrLFuqO3MNSe8QJFCCHU_IOFnB6_GmfzOc7iTCl4VZEqzfgObfyLXvJwoB8MM&usqp=CAU"
+                            alt="" style="height: 100%;">
+                    </div>
+                    <div class="info">
+                        <p>Welcome,<b>Rati </b> </p>
+                        <small class="text-muted">12102030</small>
+                    </div>
+                </div>
+                <div class="about">
+                    <h5>Course</h5>
+                    <p>BTech. Computer Science & Engineering</p>
+                    <h5>DOB</h5>
+                    <p>29-Feb-2020</p>
+                    <h5>Contact</h5>
+                    <p>+91 9040899342</p>
+                    <h5>Email</h5>
+                    <p>Rati Ranjan Biswal</p>
+                    <h5>Address</h5>
+                    <p>Rourkela</p>
+                </div>
+            </div>
+        </aside>
+
+        <main>
+            <h1> <span class="danger">Pr</span>ogress</h1>
+            <div class="subjects">
+                <div class="eg">
+                    <span class="material-icons-sharp">laptop</span>
+                    <h3>Html</h3>
+                    <h2>12/14</h2>
+                    <div class="progress">
+                        <svg>
+                            <circle cx="38" cy="38" r="36"></circle>
+                        </svg>
+                        <div class="number">
+                            <p>86%</p>
+                        </div>
+                    </div>
+                    <small class="text-muted">Recenty Updated</small>
+                </div>
+                <div class="mth">
+                    <span class="material-icons-sharp">laptop</span>
+                    <h3>Css</h3>
+                    <h2>27/29</h2>
+                    <div class="progress">
+                        <svg>
+                            <circle cx="38" cy="38" r="36"></circle>
+                        </svg>
+                        <div class="number">
+                            <p>93%</p>
+                        </div>
+                    </div>
+                    <small class="text-muted">Recenty Updated</small>
+                </div>
+                <div class="cs">
+                    <span class="material-icons-sharp">computer</span>
+                    <h3>jQuerry</h3>
+                    <h2>27/30</h2>
+                    <div class="progress">
+                        <svg>
+                            <circle cx="38" cy="38" r="36"></circle>
+                        </svg>
+                        <div class="number">
+                            <p>81%</p>
+                        </div>
+                    </div>
+                    <small class="text-muted">Recenty Updated</small>
+                </div>
+                <div class="cg">
+                    <span class="material-icons-sharp">laptop</span>
+                    <h3>Bootstrap</h3>
+                    <h2>24/25</h2>
+                    <div class="progress">
+                        <svg>
+                            <circle cx="38" cy="38" r="36"></circle>
+                        </svg>
+                        <div class="number">
+                            <p>96%</p>
+                        </div>
+                    </div>
+                    <small class="text-muted">Recenty Updated</small>
+                </div>
+                <div class="net">
+                    <span class="material-icons-sharp">laptop</span>
+                    <h3>Java</h3>
+                    <h2>25/27</h2>
+                    <div class="progress">
+                        <svg>
+                            <circle cx="38" cy="38" r="36"></circle>
+                        </svg>
+                        <div class="number">
+                            <p>92%</p>
+                        </div>
+                    </div>
+                    <small class="text-muted">Recenty Updated</small>
+                </div>
+            </div>
+
+        </main>
+    </div>
+    <div class="container">
+        <canvas id="dataPieChart"></canvas>
+    </div>
+
+</body>
+
+</html>

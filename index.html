@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<!-- Coding By CodingNepal - www.codingnepalweb.com -->
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BeyoundTech</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <!-- Google Fonts Links For Icon -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Lemon&display=swap');
+  * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+body{
+  position: relative;
+  overflow-x: hidden;
+}
+
+header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 20px;
+}
+
+header .navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.navbar .logo {
+  color: #fff;
+  font-weight: 600;
+  font-size: 2.1rem;
+  text-decoration: none;
+}
+
+.navbar .logo span {
+  color: #C06B3E;
+}
+
+.navbar .menu-links {
+  display: flex;
+  list-style: none;
+  gap: 35px;
+}
+
+.navbar a {
+  color: #fff;
+  text-decoration: none;
+  transition: 0.2s ease;
+}
+
+.navbar a:hover {
+  color: #C06B3E;
+}
+
+.hero-section {
+  height: 100vh;
+  background-image: url(./assets/back.webp);
+  background-position: center;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+}
+
+.hero-section .content {
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+  color: #E2F4FB;
+}
+
+.hero-section .content h2 {
+  font-size: 3rem;
+  max-width: 600px;
+  line-height: 70px;
+}
+
+.hero-section .content p {
+  font-weight: 300;
+  max-width: 600px;
+  margin-top: 15px;
+}
+
+.hero-section .content button {
+  background: #fff;
+  padding: 12px 30px;
+  border: none;
+  font-size: 1rem;
+  border-radius: 6px;
+  margin-top: 38px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: 0.2s ease;
+}
+
+.hero-section .content button:hover {
+  color: #fff;
+  background: #C06B3E;
+}
+
+#close-menu-btn {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  cursor: pointer;
+  display: none;
+}
+
+#hamburger-btn {
+  color: #fff;
+  cursor: pointer;
+  display: none;
+}
+
+@media (max-width: 768px) {
+  /* .chat{
+    display: none;
+  } */
+  .chat > img{
+    height: 60px;
+    width: 60px;
+  }
+  header {
+    padding: 10px;
+  }
+
+  header.show-mobile-menu::before {
+    content: "";
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(5px);
+  }
+
+  .navbar .logo {
+    font-size: 1.7rem;
+  }
+
+    
+  #hamburger-btn, #close-menu-btn {
+    display: block;
+  }
+
+  .navbar .menu-links {
+    position: fixed;
+    top: 0;
+    left: -250px;
+    width: 250px;
+    height: 100vh;
+    background: #fff;
+    flex-direction: column;
+    padding: 70px 40px 0;
+    transition: left 0.2s ease;
+  }
+
+  header.show-mobile-menu .navbar .menu-links {
+    left: 0;
+  }
+
+  .navbar a {
+    color: #000;
+  }
+
+  .hero-section .content {
+    text-align: center;
+  }
+
+  .hero-section .content :is(h2, p) {
+    max-width: 100%;
+  }
+
+  .hero-section .content h2 {
+    font-size: 2.3rem;
+    line-height: 60px;
+  }
+  
+  .hero-section .content button {
+    padding: 9px 18px;
+  }
+
+}
+.open-button {
+  background-color: #555;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  opacity: 0.8;
+  position: fixed;
+  bottom: 23px;
+  right: 28px;
+  width: 280px;
+}
+/* .chat-popup {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  right: 15px;
+  border: 3px solid #f1f1f1;
+  z-index: 9;
+} */
+
+/* Add styles to the form container */
+.form-container {
+  max-width: 300px;
+  padding: 10px;
+  background-color: white;
+  display: none;
+  position: fixed;
+  bottom: 0;
+  right: 15px;
+  border: 3px solid #f1f1f1;
+  z-index: 9;
+}
+
+/* Full-width textarea */
+.form-container textarea {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  border: none;
+  background: #f1f1f1;
+  resize: none;
+  min-height: 200px;
+}
+
+/* When the textarea gets focus, do something */
+.form-container textarea:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+/* Set a style for the submit/send button */
+.form-container .btn {
+  background-color: #04AA6D;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  margin-bottom:10px;
+  opacity: 0.8;
+}
+
+/* Add a red background color to the cancel button */
+.form-container .cancel {
+  background-color: red;
+}
+
+/* Add some hover effects to buttons */
+.form-container .btn:hover, .open-button:hover {
+  opacity: 1;
+}
+.card-img-top{
+  height: 14rem;
+    width: 100%;
+    background-size: contain;
+}
+#chat-hover{
+  background-image: url(msg.png);
+}
+#chat-hover,.chat{
+ transition: all 10s ease-in-out;
+font-size: 20px;
+
+}
+#quiz-page{
+  background-image: url(https://wallpapers.com/images/hd/colorful-abstract-background-rra8u4adw1ubypzl.jpg);
+  height: 100vh;
+  align-items: center; 
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+ margin-top: 20px;
+ width: 100vw;
+ 
+}
+#hello> h1{
+  font-family: 'Lemon', serif;
+}
+#letter > h1{
+  font-family: 'Lemon', serif;
+  font-size: 30px;
+}
+.typewriter{
+  font-size: 27px;
+  color: yellow;
+  font-weight: 900;
+}
+#course{
+  background-image: linear-gradient(to bottom right , yellow, purple);
+}
+  </style>
+  
+</head>
+  <body>
+    <header>
+      <nav class="navbar">
+        <a class="logo" href="#"><span style="color: red;">Be</span>youndTech</a>
+        <ul class="menu-links">
+          <span id="close-menu-btn" class="material-symbols-outlined">close</span>
+          <li><a href="#">Home</a></li>
+          <li><a href="./pages/user.html">Course</a></li>
+          <li><a href="https://www.w3schools.com/html/exercise.asp">Exercise</a></li>
+          <li><a href="./pages/success2.html">Testimonial</a></li>
+          <li><a href="./pages/cssquiz.html">Quiz</a></li>
+          <li><a href="./pages/login.html">LOGIN</a></li>
+        </ul>
+        <span id="hamburger-btn" class="material-symbols-outlined">menu</span>
+      </nav>
+    </header>
+
+    <section class="hero-section">
+      <div class="content">
+        <!-- <h2>Start Your Day With Creating Some Fresh Webpages</h2>
+        <p>
+          
+        </p> -->
+        <h3 style="font-size: 28px;">Welcome to BeyoundTech</h3> 
+        <div>
+          <span style="font-size: 25px;">Learn </span><span class="typewriter"></span>
+       </div>
+       <p style="font-size: 20px;">
+        Confused on which course to take ? <br>we have got you covered. Browse our Affordable and Classy course to make your place in your dream place 
+       </p>
+
+      
+      <a href="#course">  <button>Browse Course</button></a>
+      </div>
+      <div class="chat" style="position: fixed;top: 85%;right: 0;z-index: 1;">
+  <img src="./assets/bot.gif" style="height: 90px;width: 90px ;" alt="">
+    </div>
+    </section>
+    <!-- <div class="chat-popup" id="myForm"> -->
+      <form action="" class="form-container" id="myForm" >
+        <h1 style="font-size: 25px;"><span style="color: red;">Be</span>yound Connect</h1>
+    <label for="msg" style="font-size: 14px;">Hey i am <b>Techoo</b> your Study Assistant <br>How can I help You </label>
+        <label for="msg"><b>->Chat With Our Executives</b></label>
+        <textarea placeholder="Type your message.." name="msg" required ></textarea>
+        <button type="submit" class="btn" style="padding: 6px;">Send</button>
+        <button type="button" class="btn cancel" onclick="closeForm()" style="padding: 6px;">Close</button>
+      </form>
+      <div id="chat-hover" style="position: fixed;top: 80%;right: 10px;display: none;">
+        <p style="color: white;"><b>Techooo</b><br></p>
+      </div> 
+      
+<div class="container-fluid" id="course">
+    <h1 class="text-center mt-4">Courses</h1>
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+
+      <div class="col">
+        <div class="card">
+          <img src="https://www.hostinger.com/tutorials/wp-content/uploads/sites/2/2018/11/what-is-html-3.webp" class="card-img-top" alt="Html">
+          <div class="card-body">
+            <h5 class="card-title">Html</h5>
+            <p class="card-text">HTML describes the structure of a Web page</p><br>
+            <a href="https://youtu.be/BsDoLVMnmZs?feature=shared" target="_blank" class="btn btn-primary">Explore</a>
+            <!-- <a href="#" class="btn btn-primary">Quiz</a> -->
+          </div>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="card">
+          <img src="https://www.freecodecamp.org/news/content/images/2019/10/css.png" class="card-img-top" alt="Css">
+          <div class="card-body">
+            <h5 class="card-title">Css</h5>
+            <p class="card-text">CSS describes the arrangement and styling of a webpage.</p>
+            <a href="https://youtu.be/ESnrn1kAD4E?feature=shared" target="_blank" class="btn btn-primary">Explore</a>
+            <!-- <a href="#" class="btn btn-primary">Quiz</a> -->
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card">
+          <img src="https://cdn.mindmajix.com/courses/jquery-training-120620.png" class="card-img-top" alt="jQuerry">
+          <div class="card-body">
+            <h5 class="card-title">jQuerry</h5>
+            <p class="card-text">jQuery is an  library that simplifies creation and navigation of web applications.</p>
+            <a href="https://www.youtube.com/live/Rkvn_MA04fo?feature=shared" target="_blank" class="btn btn-primary">Explore</a>
+            <!-- <a href="#" class="btn btn-primary">Quiz</a> -->
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card">
+          <img src="https://miro.medium.com/v2/resize:fit:1200/1*EkWwAdxaCYHABs7dDop-NA.png" class="card-img-top" alt="Bootstrap">
+          <div class="card-body">
+            <h5 class="card-title">Bootstrap</h5>
+            <p class="card-text"> A framework that enables developers  to quickly build fully responsive websites.</p>
+            <a href="https://youtu.be/-qfEOE4vtxE?feature=shared" target="_blank" class="btn btn-primary">Explore</a>
+            <!-- <a href="#" class="btn btn-primary">Quiz</a> -->
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card">
+          <img src="https://www.sipexe.com/assets/courses/Java.jpg" class="card-img-top" alt="Course 2 Image">
+          <div class="card-body">
+            <h5 class="card-title">Java</h5>
+            <p class="card-text">Java is a widely-used programming language for coding web applications</p>
+            <a href="https://youtu.be/UmnCZ7-9yDY?feature=shared" target="_blank" class="btn btn-primary">Explore</a>
+            <!-- <a href="#" class="btn btn-primary">Quiz</a> -->
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card">
+          <img src="https://www.nextitcareer.com/wp-content/uploads/2022/09/python.jpg" class="card-img-top" alt="Course 2 Image" style="opacity:0.56;">
+          <div id="letter" style="position: absolute;top: 20%;right: 20px;">
+            <h1>COMING SOON</h1>
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">Python</h5>
+            <p class="card-text">Comming Soon....</p><br>
+            <a href="#" class="btn btn-primary">Explore</a>
+            <!-- <a href="#" class="btn btn-primary">Quiz</a> -->
+          </div>
+        </div>
+      </div>
+   </div>
+      
+  </div>
+<div class="container-fluid"  id="quiz-page">
+        <div class="row">
+          <div class="col text-center pt-3" id="hello">
+            <h1>Consider Yourself a good learner  ?</h1>
+            <h3>Check your progress by Giving a Assessment Quiz based on your Specialized Subject </h3>
+            <!-- <img src="quiz-gif.webp" alt="" style="height: 300px;width: 300px;"> -->
+           <a href="./pages/nav.html"> <button type="button" class="btn btn-danger">Take a Quiz </button></a>
+            
+          </div>
+        </div>
+      </div>
+      
+    <!-- </div> -->
+    <script>
+      const header = document.querySelector("header");
+      const hamburgerBtn = document.querySelector("#hamburger-btn");
+      const closeMenuBtn = document.querySelector("#close-menu-btn");
+      hamburgerBtn.addEventListener("click", () => header.classList.toggle("show-mobile-menu"));
+      closeMenuBtn.addEventListener("click", () => hamburgerBtn.click()); 
+function openForm() {
+  document.getElementById("myForm").style.display = "block";
+}
+function closeForm() {
+  document.getElementById("myForm").style.display = "none";
+}
+</script>
+    <script>
+     $(document).ready(function(){
+  $(".chat").click(function(){
+    $(".form-container").slideToggle("slow");
+  });
+  $(".chat").mouseenter(function(){
+    $("#chat-hover").css("display","block");
+  });
+  $(".chat").mouseleave(function(){
+    $("#chat-hover").css("display","none");
+    $("#chat-hover").css("transition","all 1s linear");
+  });
+});
+//typewritter
+const words = ["Python ", "Java ", "JavaScript ", "Bootstrap "];
+      let i = 0;
+      let j = 0;
+      let currentWord = "";
+      let isDeleting = false;
+
+      function type() {
+        currentWord = words[i];
+        if (!isDeleting) {
+          $(".typewriter").text(currentWord.substring(0, j++));
+        } else {
+          $(".typewriter").text(currentWord.substring(0, j--));
+        }
+        if (!isDeleting && j === currentWord.length + 1) {
+          isDeleting = true;
+        } else if (isDeleting && j === 0) {
+          isDeleting = false;
+          i = (i + 1) % words.length;
+        }
+        setTimeout(type, isDeleting ? 50 : 200);
+      }
+
+      $(document).ready(function () {
+        type();
+      });
+    </script>
+   <footer
+   class="text-center text-lg-start text-light p-4"
+   style="
+     background-image: url('./images/footer-bg.png');
+     background-repeat: no-repeat;
+     background-color: hsl(222, 46%, 17%);
+   "
+ >
+   <section>
+     <div class="container text-center text-md-start mt-5">
+       <div class="row mt-3">
+         <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+           <h6 class="text-uppercase fw-bold mb-4">
+             <i class="fas fa-gem me-3"></i>BeyoundTech
+           </h6>
+           <p>
+             Involve Yourself in Value Creation 
+           </p>
+         </div>
+         <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+           <h6 class="text-uppercase fw-bold mb-4">Categories</h6>
+           <p>
+             <a href="index.html" class="text-reset">Education</a>
+           </p>
+           <p>
+             <a href="https://www.lifestylestores.com/in/en/" class="text-reset">Lifestyle</a>
+           </p>
+           <p>
+             <a href="https://www.linkedin.com/" class="text-reset">Jobs</a>
+           </p>
+           <p>
+             <a href="https://www.careers360.com/" class="text-reset">Careers</a>
+           </p>
+         </div>
+         <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4 ">
+           <h6 class="text-uppercase fw-bold mb-4">Quick links</h6>
+           <p>
+             <a href="#" class="text-reset">Home</a>
+           </p>
+           <p>
+             <a href="#quiz-page" class="text-reset">Quiz</a>
+           </p>
+           <p>
+             <a href="#course" class="text-reset">Course</a>
+           </p>
+           <p>
+             <a href="./pages/login.html" class="text-reset">Login</a>
+           </p>
+         </div>
+         <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+           <h6 class="text-uppercase fw-bold mb-4">Contact</h6>
+           <p><i class="fas fa-home me-3"></i> Bhubaneswar</p>
+           <p>
+             <i class="fas fa-envelope me-3"></i>
+             beyondtech@gmail.com
+           </p>
+           <p><i class="fas fa-phone me-3"></i> + 91 9876543210</p>
+           <p><i class="fas fa-print me-3"></i> + 91 9876543210</p>
+         </div>
+       </div>
+     </div> 
+   <div
+     class="text-center p-4"
+     style="background-color: rgba(0, 0, 0, 0.05)"
+   >
+     © 2024 Copyright:
+     <a class="text-reset fw-bold" href="index.html">BeyoundTech</a>
+   </div>
+ </footer>
+
+    
+  </body>
+</html>
